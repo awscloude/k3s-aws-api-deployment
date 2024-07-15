@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadaa:
+  labels:
+    app: python-api
+  name: python-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api
+  template:
+    metadata:
+      labels:
+        app: python-api
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
