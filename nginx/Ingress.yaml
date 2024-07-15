@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mypc-accessories-minion
+  namespace: accessories_ns
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: mypc.com
+    http:
+      paths:
+      - path: /accessories
+        pathType: Prefix
+        backend:
+          service:
+            name: accessories-svc
+            port:
+              number: 80
